@@ -150,6 +150,36 @@ export type Props = {
    * @default expandOnContentDrag === false
    */
   expandOnContentDrag?: boolean,
+
+  /**
+   * The ref object that contains the refs to the bottom sheet elements.
+   */
+  refs?: {
+    /**
+     * The ref to the bottom sheet container element.
+     */
+    container: React.MutableRefObject<HTMLDivElement>,
+    /**
+     * The ref to the bottom sheet scroll element.
+     */
+    scroll: React.MutableRefObject<HTMLDivElement>,
+    /**
+     * The ref to the bottom sheet content element.
+     */
+    content: React.MutableRefObject<HTMLDivElement>,
+    /**
+     * The ref to the bottom sheet header element.
+     */
+    header: React.MutableRefObject<HTMLDivElement>,
+    /**
+     * The ref to the bottom sheet footer element.
+     */
+    footer: React.MutableRefObject<HTMLDivElement>,
+    /**
+     * The ref to the bottom sheet overlay element.
+     */
+    overlay: React.MutableRefObject<HTMLDivElement | null>
+  }
 } & Omit<React.PropsWithoutRef<JSX.IntrinsicElements['div']>, 'children'>
 
 export interface RefHandles {

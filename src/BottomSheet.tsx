@@ -69,6 +69,7 @@ export const BottomSheet = React.forwardRef<
     onSpringEnd,
     reserveScrollBarGap = blocking,
     expandOnContentDrag = false,
+    refs,
     ...props
   },
   forwardRef
@@ -93,12 +94,19 @@ export const BottomSheet = React.forwardRef<
   // Behold, the engine of it all!
   const [spring, set] = useSpring()
 
-  const containerRef = useRef<HTMLDivElement>(null)
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
-  const headerRef = useRef<HTMLDivElement>(null)
-  const footerRef = useRef<HTMLDivElement>(null)
-  const overlayRef = useRef<HTMLDivElement | null>(null)
+  const _containerRef = useRef<HTMLDivElement>(null)
+  const _scrollRef = useRef<HTMLDivElement>(null)
+  const _contentRef = useRef<HTMLDivElement>(null)
+  const _headerRef = useRef<HTMLDivElement>(null)
+  const _footerRef = useRef<HTMLDivElement>(null)
+  const _overlayRef = useRef<HTMLDivElement | null>(null)
+
+  const containerRef = refs?.container || _containerRef
+  const scrollRef = refs?.scroll || _scrollRef
+  const contentRef = refs?.content || _contentRef
+  const headerRef = refs?.header || _headerRef
+  const footerRef = refs?.footer || _footerRef
+  const overlayRef = refs?.overlay || _overlayRef
 
   // Keeps track of the current height, or the height transitioning to
   const heightRef = useRef(0)
